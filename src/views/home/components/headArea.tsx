@@ -37,23 +37,23 @@ const HeadArea: React.FC = () => {
             <PopIcon1 src={HeadIcon1} />
             <PopPhone src={HeadPhone} />
             <PopAnnotations>
-              <text
+              <span
                 onClick={jumpOut.bind(
                   this,
                   "https://www.app-privacy-policy.com/live.php?token=yvVQTONdZyKEBQn3zholTUcedrY9SpO5"
                 )}
               >
                 Terms of Service
-              </text>
+              </span>
               <span> & </span>
-              <text
+              <span
                 onClick={jumpOut.bind(
                   this,
                   "http://privacypolicy.popshots.io/"
                 )}
               >
                 Privacy Policy.
-              </text>
+              </span>
             </PopAnnotations>
           </RightBlock>
         </FlexCenter>

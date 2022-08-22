@@ -16,6 +16,21 @@ class MobileHeadArea extends React.Component {
     const jumpOut = (webUrl: any) => {
       window.open(webUrl);
     };
+    const judgePhoneType = () => {
+      const ua = navigator.userAgent || "";
+      let isAndroid = ua.indexOf("Android") > -1 || ua.indexOf("Adr") > -1; //android终端
+      let isIOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+      if (isAndroid) {
+        return 'Android'
+      }
+      if (isIOS) {
+        return 'IOS'
+      }
+    };
+    const radioActive = () => {
+      const type = judgePhoneType()
+      console.log(type)
+    };
     return (
       <>
         <MobileHeadBlock>
@@ -26,13 +41,29 @@ class MobileHeadArea extends React.Component {
               <PopContent>Share anything, anytime, anywhere.</PopContent>
             </PopInfo>
           </PopText>
-          <PopButton src={HeadButton} onClick={jumpOut.bind(this,'https://play.google.com/store/apps/details?id=com.start.pop')} />
+          <PopButton
+            src={HeadButton}
+            onClick={() => {
+              radioActive();
+            }}
+          />
           <PopPhone src={HeadPhone} />
           <PopAnnotations>
-            <text onClick={jumpOut.bind(this,'https://www.app-privacy-policy.com/live.php?token=yvVQTONdZyKEBQn3zholTUcedrY9SpO5')}>Terms of Service</text>
-            <text> & </text>
-            <text onClick={jumpOut.bind(this,'http://privacypolicy.popshots.io/')}>Privacy Policy.</text>
-            </PopAnnotations>
+            <div
+              onClick={jumpOut.bind(
+                this,
+                "https://www.app-privacy-policy.com/live.php?token=yvVQTONdZyKEBQn3zholTUcedrY9SpO5"
+              )}
+            >
+              Terms of Service
+            </div>
+            <div> & </div>
+            <div
+              onClick={jumpOut.bind(this, "http://privacypolicy.popshots.io/")}
+            >
+              Privacy Policy.
+            </div>
+          </PopAnnotations>
         </MobileHeadBlock>
       </>
     );
@@ -94,10 +125,12 @@ const PopPhone = styled.img`
 `;
 
 const PopAnnotations = styled.div`
-    font-size: 0.2rem;
-    font-weight: 400;
-    color: #232028;
-    line-height: 0.2rem;
-    text-align: center;
-    padding: 0.34rem 0 0.56rem 0;
+  display: flex;
+  justify-content: center;
+  font-size: 0.2rem;
+  font-weight: 400;
+  color: #232028;
+  line-height: 0.2rem;
+  text-align: center;
+  padding: 0.34rem 0 0.56rem 0;
 `;

@@ -21,15 +21,15 @@ class Home extends Component {
   }
 
   componentDidMount = () => {
-    console.log("componentDidMount");
+    // console.log("componentDidMount");
   };
 
   componentWillUnmount = () => {
-    console.log("componentWillUnmount");
+    // console.log("componentWillUnmount");
   };
 
   componentDidUpdate = () => {
-    console.log("componentDidUpdate");
+    // console.log("componentDidUpdate");
   };
 }
 
