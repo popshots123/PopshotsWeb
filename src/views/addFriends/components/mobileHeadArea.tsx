@@ -24,7 +24,7 @@ class MobileHeadArea extends React.Component {
       const query =  window.location.href.split('?')[1] == undefined?'':'?'+window.location.href.split('?')[1]
       let url = `https://www.popshots.xyz/addfriends${query}`
       console.log(url)
-      window.location.href = url;
+      // window.location.href = url;
     }
 
     const judgePhoneType = () => {
