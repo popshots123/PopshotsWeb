@@ -23,7 +23,7 @@ class MobileHeadArea extends React.Component<any, any> {
     const evokeByLocation= () =>{
       console.log((window.location.href.split('?')[1]))
       const query =  window.location.href.split('?')[1] == undefined?'':'?'+window.location.href.split('?')[1]
-      let url = `https://www.popshots.xyz/#/addfriends${query}`
+      let url = `https://www.popshots.xyz/addfriends${query}`
       //let url = `/addfriends${query}`
       window.location.href = url;
       const navigate = useNavigate();
