@@ -22,7 +22,7 @@ class MobileHeadArea extends React.Component {
     const evokeByLocation= () =>{
       console.log((window.location.href.split('?')[1]))
       const query =  window.location.href.split('?')[1] == undefined?'':'?'+window.location.href.split('?')[1]
-      let url = `https://www.jasontaylor.club/#/addfriends${query}`
+      let url = `https://www.popshots.xyz/#/addfriends${query}`
       console.log(url)
       window.location.href = url;
     }
