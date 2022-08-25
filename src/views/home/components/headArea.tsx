@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Circles from "../../../assets/images/home/window/head-background.png";
 import HeadLogo from "../../../assets/images/home/window/head-logo.png";
 import HeadButton from "../../../assets/images/home/window/head-button.png";
+import HeadIosButton from "../../../assets/images/home/window/head-ios-button.png"
 
 import HeadIcon1 from "../../../assets/images/home/window/head-icon1.png";
 import HeadPhone from "../../../assets/images/home/window/head-phone.png";
@@ -31,6 +32,13 @@ const HeadArea: React.FC = () => {
                 "https://play.google.com/store/apps/details?id=com.start.pop"
               )}
               src={HeadButton}
+            />
+             <PopButton
+              onClick={jumpOut.bind(
+                this,
+                "/"
+              )}
+              src={HeadIosButton}
             />
           </LeftBlock>
           <RightBlock>
@@ -91,6 +99,7 @@ const PopText = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;
+  margin-bottom:0.5rem;
 `;
 const PopLogo = styled.img`
   width: 0.6rem;
@@ -117,7 +126,7 @@ const PopContent = styled.div`
 const PopButton = styled.img`
   width: 2.67rem;
   height: 0.52rem;
-  margin-top: 1.05rem;
+  margin-top: 0.3rem;
   margin-left: 0.65rem;
   cursor: pointer;
 `;

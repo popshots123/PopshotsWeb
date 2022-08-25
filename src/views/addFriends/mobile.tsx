@@ -35,7 +35,7 @@ class MobileHeadArea extends React.Component {
        type = 'android'
       }
       if (isIOS) {
-        url = 'https://itunes.apple.com/cn/app/id432274380'
+        url = '/'
         type='ios'
       }
       this.setState({

@@ -6,13 +6,30 @@ import { useNavigate } from 'react-router-dom'
 import MobileHeadImage from "../../../assets/images/home/mobile/head-background.png";
 import HeadLogo from "../../../assets/images/home/mobile/head-logo.png";
 import HeadButton from "../../../assets/images/home/mobile/head-button.png";
+import HeadIosButton from "../../../assets/images/home/mobile/head-ios-button.png"
 import HeadPhone from "../../../assets/images/home/window/head-phone.png";
 
 class MobileHeadArea extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-    console.log(this.props)
-    this.state = {};
+  state = {type:''}
+
+  judgePhoneType = () => {
+    const ua = navigator.userAgent || "";
+    let isAndroid = ua.indexOf("Android") > -1 || ua.indexOf("Adr") > -1; //android终端
+    let isIOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    let type = ''
+    if (isAndroid) {
+     type = 'android'
+    }
+    if (isIOS) {
+      type='ios'
+    }
+    this.setState({
+      type:type
+    })
+  };
+
+  componentDidMount() {
+     this.judgePhoneType();
   }
 
   render() {
@@ -24,11 +41,7 @@ class MobileHeadArea extends React.Component<any, any> {
       console.log((window.location.href.split('?')[1]))
       const query =  window.location.href.split('?')[1] == undefined?'':'?'+window.location.href.split('?')[1]
       let url = `https://www.popshots.xyz/addfriends${query}`
-      //let url = `/addfriends${query}`
       window.location.href = url;
-      // const navigate = useNavigate();
-      // navigate('/addfriends${query}')
-      // this.props.history.push(url)
     }
     const radioActive = () => {
       evokeByLocation()
@@ -44,7 +57,7 @@ class MobileHeadArea extends React.Component<any, any> {
             </PopInfo>
           </PopText>
           <PopButton
-            src={HeadButton}
+            src={this.state.type == 'ios'? HeadIosButton : HeadButton}
             onClick={() => {
               radioActive();
             }}
