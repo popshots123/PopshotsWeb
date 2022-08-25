@@ -35,6 +35,7 @@ class MobileHeadArea extends React.Component<any, any> {
     };
     return (
       <>
+      <div>v:1.0</div>
         <MobileHeadBlock>
           <PopText>
             <PopLogo src={HeadLogo}></PopLogo>
