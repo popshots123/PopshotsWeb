@@ -5,14 +5,23 @@ import MobileHeadImage from "../../assets/images/home/mobile/head-background.png
 import HeadLogo from "../../assets/images/home/mobile/head-logo.png";
 import HeadButton from "../../assets/images/home/mobile/head-button.png";
 import HeadPhone from "../../assets/images/home/window/head-phone.png";
+import IosButton from '../../assets/images/addFriends/mobile/ios-en.png'
+import AndroidButton from '../../assets/images/addFriends/mobile/android-en.png'
 import { Router } from "react-router";
 
+
 class MobileHeadArea extends React.Component {
-  constructor(props: any) {
-    super(props);
-    console.log(this.props);
-    this.state = {url:'',type:''};
-  }
+
+
+  state = {url:'',type:''};
+
+  radioActive = () => {
+    console.log(this.state)
+    console.log(this.state.url)
+    let url = this.state.url
+    window.location.href = url;
+    };
+
 
   componentDidMount() {
     const judgePhoneType = () => {
@@ -44,9 +53,6 @@ class MobileHeadArea extends React.Component {
     const jumpOut = (webUrl: any) => {
       window.open(webUrl);
     };
-    const radioActive = () => {
-      console.log(this.state);
-    };
 
     return (
       <>
@@ -59,9 +65,10 @@ class MobileHeadArea extends React.Component {
             </PopInfo>
           </PopText>
           <PopButton
-            src={HeadButton}
+          
+            src={this.state.type=='ios'?IosButton:AndroidButton}
             onClick={() => {
-              radioActive();
+              this.radioActive()
             }}
           />
           <PopPhone src={HeadPhone} />
@@ -128,8 +135,8 @@ const PopContent = styled.div`
 `;
 const PopButton = styled.img`
   display: block;
-  width: 4.64rem;
-  height: 1.48rem;
+  /* width: 4.64rem; */
+  height: 1rem;
   margin: 0.94rem auto 0 auto;
 `;
 
