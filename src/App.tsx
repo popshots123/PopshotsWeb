@@ -13,7 +13,7 @@ export default class App extends Component {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>
-        {/* <Route path="/*" element={<AddFriends />}></Route> */}
+        <Route path="/*" element={<AddFriends />}></Route>
       </Routes>
     </BrowserRouter>
     );
