@@ -13,7 +13,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log("render");
     const isMobile = useJudgeTerminal()
     return (
       isMobile?<Mobile />:<Window />

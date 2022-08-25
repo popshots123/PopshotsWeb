@@ -22,22 +22,10 @@ class MobileHeadArea extends React.Component {
     const evokeByLocation= () =>{
       console.log((window.location.href.split('?')[1]))
       const query =  window.location.href.split('?')[1] == undefined?'':'?'+window.location.href.split('?')[1]
-      let url = `https://www.popshots.xyz/addfriends${query}`
+      let url = `https://www.jasontaylor.club/#/addfriends${query}`
       console.log(url)
       window.location.href = url;
     }
-
-    const judgePhoneType = () => {
-      const ua = navigator.userAgent || "";
-      let isAndroid = ua.indexOf("Android") > -1 || ua.indexOf("Adr") > -1; //android终端
-      let isIOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-      if (isAndroid) {
-        return "Android";
-      }
-      if (isIOS) {
-        return "IOS";
-      }
-    };
     const radioActive = () => {
       evokeByLocation()
     };
