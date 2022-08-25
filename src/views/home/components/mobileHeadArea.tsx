@@ -7,7 +7,7 @@ import HeadButton from "../../../assets/images/home/mobile/head-button.png";
 import HeadPhone from "../../../assets/images/home/window/head-phone.png";
 import { Router } from "react-router";
 
-class MobileHeadArea extends React.Component {
+class MobileHeadArea extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     console.log(this.props)
@@ -25,7 +25,10 @@ class MobileHeadArea extends React.Component {
       // let url = `https://www.popshots.xyz/#/addfriends${query}`
       let url = `/addfriends${query}`
       console.log(url)
-      window.location.href = url;
+      console.log(this.props)
+      // window.location.href = url;
+      window.open(url)
+      // this.props.history.push(url)
     }
     const radioActive = () => {
       evokeByLocation()
