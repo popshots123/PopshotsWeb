@@ -9,13 +9,12 @@ import AddFriends from "./views/addFriends/addFriends";
 export default class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="*" element={<AddFriends />}></Route>
+          <Route path="/addfriends" element={<AddFriends />}></Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

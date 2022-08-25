@@ -16,8 +16,6 @@ class MobileHeadArea extends React.Component {
   state = {url:'',type:''};
 
   radioActive = () => {
-    console.log(this.state)
-    console.log(this.state.url)
     let url = this.state.url
     window.location.href = url;
     };

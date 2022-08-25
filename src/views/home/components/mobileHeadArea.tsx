@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
+import { useNavigate } from 'react-router-dom'
+
 import MobileHeadImage from "../../../assets/images/home/mobile/head-background.png";
 import HeadLogo from "../../../assets/images/home/mobile/head-logo.png";
 import HeadButton from "../../../assets/images/home/mobile/head-button.png";
 import HeadPhone from "../../../assets/images/home/window/head-phone.png";
-import { Router } from "react-router";
 
 class MobileHeadArea extends React.Component<any, any> {
   constructor(props: any) {
@@ -24,10 +25,9 @@ class MobileHeadArea extends React.Component<any, any> {
       const query =  window.location.href.split('?')[1] == undefined?'':'?'+window.location.href.split('?')[1]
       // let url = `https://www.popshots.xyz/#/addfriends${query}`
       let url = `/addfriends${query}`
-      console.log(url)
-      console.log(this.props)
-      // window.location.href = url;
-      window.open(url)
+      window.location.href = url;
+      const navigate = useNavigate();
+      navigate('/addfriends${query}')
       // this.props.history.push(url)
     }
     const radioActive = () => {
