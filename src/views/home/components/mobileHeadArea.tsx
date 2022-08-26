@@ -40,8 +40,14 @@ class MobileHeadArea extends React.Component<any, any> {
     const evokeByLocation= () =>{
       console.log((window.location.href.split('?')[1]))
       const query =  window.location.href.split('?')[1] == undefined?'':'?'+window.location.href.split('?')[1]
-      let url = `https://www.popshots.xyz/addfriends${query}`
+      if(this.state.type== 'android'){
+        let url = `popshot://www.popshots.xyz/addfriends${query}`
       window.location.href = url;
+      }else if(this.state.type== 'ios'){
+        let url = `https://www.popshots.xyz/addfriends${query}`
+      window.location.href = url;
+      }
+      
     }
     const radioActive = () => {
       evokeByLocation()
