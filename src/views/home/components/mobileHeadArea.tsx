@@ -1,56 +1,76 @@
 import React from "react";
 import styled from "styled-components";
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 import MobileHeadImage from "../../../assets/images/home/mobile/head-background.png";
 import HeadLogo from "../../../assets/images/home/mobile/head-logo.png";
 import HeadButton from "../../../assets/images/home/mobile/head-button.png";
-import HeadIosButton from "../../../assets/images/home/mobile/head-ios-button.png"
+import HeadIosButton from "../../../assets/images/home/mobile/head-ios-button.png";
 import HeadPhone from "../../../assets/images/home/window/head-phone.png";
 
 class MobileHeadArea extends React.Component<any, any> {
-  state = {type:''}
+  state = { type: "" };
+
+  jumpOut = (webUrl: any) => {
+    window.open(webUrl);
+  };
 
   judgePhoneType = () => {
     const ua = navigator.userAgent || "";
     let isAndroid = ua.indexOf("Android") > -1 || ua.indexOf("Adr") > -1; //android终端
     let isIOS = !!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-    let type = ''
+    let type = "";
     if (isAndroid) {
-     type = 'android'
+      type = "android";
     }
     if (isIOS) {
-      type='ios'
+      type = "ios";
     }
     this.setState({
-      type:type
-    })
+      type: type,
+    });
   };
 
   componentDidMount() {
-     this.judgePhoneType();
+    this.judgePhoneType();
   }
 
-  render() {
-    const jumpOut = (webUrl: any) => {
-      window.open(webUrl);
-    };
+  goAndroid = () => {
+    const query =
+      window.location.href.split("?")[1] == undefined
+        ? ""
+        : "?" + window.location.href.split("?")[1];
+    let url = `popshot://www.popshots.xyz/addfriends${query}`;
+    let ifr = document.createElement("iframe");
+    ifr.setAttribute("src", url); /***打开app的协议，有an同事提供***/
+    ifr.style.display = "none";
+    document.body.appendChild(ifr);
 
-    const evokeByLocation= () =>{
-      console.log((window.location.href.split('?')[1]))
-      const query =  window.location.href.split('?')[1] == undefined?'':'?'+window.location.href.split('?')[1]
-      if(this.state.type== 'android'){
-        let url = `popshot://www.popshots.xyz/addfriends${query}`
-      window.location.href = url;
-      }else if(this.state.type== 'ios'){
-        let url = `https://www.popshots.xyz/addfriends${query}`
-      window.location.href = url;
-      }
-      
+    // setTimeout(function () {
+    //   location.href = "market://details?id=com.start.pop";
+    // }, 3000);
+  };
+
+  render() {
+    if (this.state.type == "android") {
+      this.goAndroid();
     }
+    const evokeByLocation = () => {
+      const query =
+        window.location.href.split("?")[1] == undefined
+          ? ""
+          : "?" + window.location.href.split("?")[1];
+      if (this.state.type == "android") {
+        let url = `https://www.popshots.xyz/addfriends${query}`;
+        window.location.href = url;
+      } else if (this.state.type == "ios") {
+        let url = `https://www.popshots.xyz/addfriends${query}`;
+        window.location.href = url;
+      }
+    };
     const radioActive = () => {
-      evokeByLocation()
+      evokeByLocation();
     };
     return (
       <>
@@ -63,7 +83,7 @@ class MobileHeadArea extends React.Component<any, any> {
             </PopInfo>
           </PopText>
           <PopButton
-            src={this.state.type == 'ios'? HeadIosButton : HeadButton}
+            src={this.state.type == "ios" ? HeadIosButton : HeadButton}
             onClick={() => {
               radioActive();
             }}
@@ -71,7 +91,7 @@ class MobileHeadArea extends React.Component<any, any> {
           <PopPhone src={HeadPhone} />
           <PopAnnotations>
             <div
-              onClick={jumpOut.bind(
+              onClick={this.jumpOut.bind(
                 this,
                 "https://www.app-privacy-policy.com/live.php?token=yvVQTONdZyKEBQn3zholTUcedrY9SpO5"
               )}
@@ -80,7 +100,10 @@ class MobileHeadArea extends React.Component<any, any> {
             </div>
             <div> & </div>
             <div
-              onClick={jumpOut.bind(this, "http://privacypolicy.popshots.io/")}
+              onClick={this.jumpOut.bind(
+                this,
+                "http://privacypolicy.popshots.io/"
+              )}
             >
               Privacy Policy.
             </div>
