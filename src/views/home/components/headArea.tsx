@@ -8,6 +8,7 @@ import HeadIosButton from "../../../assets/images/home/window/head-ios-button.pn
 
 import HeadIcon1 from "../../../assets/images/home/window/head-icon1.png";
 import HeadPhone from "../../../assets/images/home/window/head-phone.png";
+import ContentImg from "../../../assets/images/home/window/content.png";
 
 import PopShotImg from "../../../assets/images/home/window/PopShots.png"
 
@@ -25,7 +26,9 @@ const HeadArea: React.FC = () => {
             <PopText>
               <PopLogo src={HeadLogo}></PopLogo>
               <PopLogoText src={PopShotImg}></PopLogoText>
-              <PopContent>Share anything, anytime, anywhere.</PopContent>
+              <PopContent>
+                <img src={ContentImg} alt="" />
+              </PopContent>
             </PopText>
             <PopButton
               onClick={jumpOut.bind(
@@ -97,13 +100,15 @@ const LeftBlock = styled.div`
 
 const PopText = styled.div`
   /* display: flex; */
-  align-items: center;
-  justify-content: start;
-  margin-top: 1.5rem;
+  /* align-items: center;
+  justify-content: start; */
+  margin-top: 1.1rem;
+  margin-bottom: 0.8rem;
 `;
 const PopLogo = styled.img`
   width: 0.6rem;
   height: 0.6rem;
+  display: block;
 `;
 const PopLogoText = styled.img`
   width: 4.75rem;
@@ -120,11 +125,14 @@ const PopTitle = styled.div`
   margin-bottom: 0.04rem;
 `;
 const PopContent = styled.div`
-  font-size: 0.2rem;
+  font-size: 0.18rem;
   font-weight: 400;
   color: #EDF5F8;
   line-height: 0.3rem;
   margin-top: 0.1rem;
+  img{
+    width: 3.5rem;
+  }
 `;
 const PopButton = styled.img`
   width: 2.67rem;
@@ -171,9 +179,10 @@ const Qvideo = styled.video`
   left: 0;
 `;
 const Agreement = styled.div`
-  color: #ffffff;
+  color: #797BA0;
   margin-top: 0.8rem;
   text-align: left;
   font-size: 0.12rem;
   margin-left: 0.4rem;
+  text-decoration:underline
 `

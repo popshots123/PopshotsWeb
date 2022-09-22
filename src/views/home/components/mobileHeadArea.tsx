@@ -179,9 +179,10 @@ const PopContent = styled.div`
 `;
 const PopButton = styled.img`
  position: relative;
-  display: block;
-  width: 4.64rem;
-  margin: 0.94rem auto 0 auto;
+    display: block;
+    /* width: 3.8rem; */
+    height: 1.04rem;
+    margin: 1.9rem auto 0 auto;
   
 `;
 
@@ -194,15 +195,20 @@ const PopPhone = styled.img`
 `;
 
 const PopAnnotations = styled.div`
- position: relative;
+ position: absolute;
+ bottom: 0.1rem;
+
+ width: 100%;
   display: flex;
   justify-content: center;
-  font-size: 0.2rem;
+  font-size: 0.1rem;
   font-weight: 400;
   color: #ffffff;
   line-height: 0.2rem;
   text-align: center;
   padding: 0.84rem 0 0.56rem 0;
+  color: #2E7E8F;
+  text-decoration:underline
 `;
 
 const PopLogoText = styled.img`
@@ -214,11 +220,11 @@ const PopLogoText = styled.img`
 `
 
 const Qvideo = styled.div`
-  display: block;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+ display: block;
+    width: 120%;
+    position: absolute;
+    bottom: 0;
+    left: -1.6rem;
   video{
     width: 100%;
   }
