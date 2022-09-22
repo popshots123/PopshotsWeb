@@ -87,6 +87,7 @@ class MobileHeadArea extends React.Component<any, any> {
               preload="auto"
               controlsList="nodownload"
               muted
+              loop
               playsInline
               data-wf-ignore="true"
               data-object-fit="cover"
