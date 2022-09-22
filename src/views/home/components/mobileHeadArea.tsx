@@ -201,7 +201,7 @@ const PopAnnotations = styled.div`
  width: 100%;
   display: flex;
   justify-content: center;
-  font-size: 0.1rem;
+  font-size: 0.14rem;
   font-weight: 400;
   color: #ffffff;
   line-height: 0.2rem;
