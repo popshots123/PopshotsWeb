@@ -124,7 +124,7 @@ class MobileHeadArea extends React.Component<any, any> {
             <div
               onClick={this.jumpOut.bind(
                 this,
-                "http://privacypolicy.popshots.io/"
+                "http://privacypolicy.popshots.xyz"
               )}
             >
               Privacy Policy.
