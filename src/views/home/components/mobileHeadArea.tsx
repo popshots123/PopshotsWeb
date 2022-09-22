@@ -81,7 +81,24 @@ class MobileHeadArea extends React.Component<any, any> {
       <>
         
         <MobileHeadBlock>
-        <Qvideo autoPlay loop muted src="./qvideoMobile.mp4"></Qvideo>
+        <Qvideo>
+        <video
+              autoPlay
+              preload="auto"
+              controlsList="nodownload"
+              muted
+              playsInline
+              data-wf-ignore="true"
+              data-object-fit="cover"
+            >
+              <source
+                src="./qvideoMobile.mp4"
+                type="video/mp4"
+                data-wf-ignore="true"
+              />
+              您的浏览器不支持 video 标签。
+            </video>
+        </Qvideo>
           <PopText>
             <PopLogo src={HeadLogo}></PopLogo>
           </PopText>
@@ -195,10 +212,13 @@ const PopLogoText = styled.img`
   margin-top: 1.6rem;
 `
 
-const Qvideo = styled.video`
+const Qvideo = styled.div`
   display: block;
   width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
+  video{
+    width: 100%;
+  }
 `;
