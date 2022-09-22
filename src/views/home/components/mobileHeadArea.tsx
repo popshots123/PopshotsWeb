@@ -5,9 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 import MobileHeadImage from "../../../assets/images/home/mobile/head-background.png";
 import HeadLogo from "../../../assets/images/home/mobile/head-logo.png";
-import HeadButton from "../../../assets/images/home/mobile/head-button.png";
-import HeadIosButton from "../../../assets/images/home/mobile/head-ios-button.png";
+// import HeadButton from "../../../assets/images/home/mobile/head-button.png";
+// import HeadIosButton from "../../../assets/images/home/mobile/head-ios-button.png";
 import HeadPhone from "../../../assets/images/home/window/head-phone.png";
+
+import PopShotImg from "../../../assets/images/home/window/PopShots.png"
+
+import HeadButton from "../../../assets/images/home/window/head-button.png";
+import HeadIosButton from "../../../assets/images/home/window/head-ios-button.png";
 
 class MobileHeadArea extends React.Component<any, any> {
   state = { type: "" };
@@ -74,21 +79,20 @@ class MobileHeadArea extends React.Component<any, any> {
     };
     return (
       <>
+        
         <MobileHeadBlock>
+        <Qvideo autoPlay loop muted src="./qvideoMobile.mp4"></Qvideo>
           <PopText>
             <PopLogo src={HeadLogo}></PopLogo>
-            <PopInfo>
-              <PopTitle>Popshots</PopTitle>
-              <PopContent>Share anything, anytime, anywhere.</PopContent>
-            </PopInfo>
           </PopText>
+          <PopLogoText src={PopShotImg}></PopLogoText>
+              <PopContent>Share anything, anytime, anywhere.</PopContent>
           <PopButton
             src={this.state.type == "ios" ? HeadIosButton : HeadButton}
             onClick={() => {
               radioActive();
             }}
           />
-          <PopPhone src={HeadPhone} />
           <PopAnnotations>
             <div
               onClick={this.jumpOut.bind(
@@ -118,22 +122,22 @@ export default MobileHeadArea;
 
 const MobileHeadBlock = styled.div`
   width: 7.5rem;
-  background-image: url(${MobileHeadImage});
-  background-repeat: no-repeat;
-  background-size: 7.5rem 18.98rem;
-  background-position: 0% 0%;
+  background: #000000;
   min-height: 100vh;
+  position: relative;
 `;
 
 const PopText = styled.div`
+ position: relative;
   display: flex;
   align-items: center;
   justify-content: start;
-  padding: 0.4rem;
+  padding: 1.34rem 0 0 0.94rem ;
 `;
 const PopLogo = styled.img`
-  width: 0.64rem;
-  height: 0.64rem;
+ position: relative;
+  width: 1.04rem;
+  height: 1.04rem;
 `;
 
 const PopInfo = styled.div`
@@ -147,17 +151,20 @@ const PopTitle = styled.div`
   margin-bottom: 0.03rem;
 `;
 const PopContent = styled.div`
+ position: relative;
   font-size: 0.24rem;
   font-weight: 500;
-  color: #232028;
+  color: #FFFFFF;
   line-height: 0.24rem;
-  margin-top: 0.03rem;
+  margin-top: 0.4rem;
+  text-align: center;
 `;
 const PopButton = styled.img`
+ position: relative;
   display: block;
   width: 4.64rem;
-  height: 1.48rem;
   margin: 0.94rem auto 0 auto;
+  
 `;
 
 const PopPhone = styled.img`
@@ -169,12 +176,29 @@ const PopPhone = styled.img`
 `;
 
 const PopAnnotations = styled.div`
+ position: relative;
   display: flex;
   justify-content: center;
   font-size: 0.2rem;
   font-weight: 400;
-  color: #232028;
+  color: #ffffff;
   line-height: 0.2rem;
   text-align: center;
-  padding: 0.34rem 0 0.56rem 0;
+  padding: 0.84rem 0 0.56rem 0;
+`;
+
+const PopLogoText = styled.img`
+ position: relative;
+  width: 5.9rem;
+  display: block;
+  margin: 0 auto;
+  margin-top: 1.6rem;
+`
+
+const Qvideo = styled.video`
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 `;
