@@ -51,7 +51,7 @@ const HeadArea: React.FC = () => {
               <span
                 onClick={jumpOut.bind(
                   this,
-                  "http://privacypolicy.popshots.io/"
+                  "http://privacypolicy.popshots.xyz/"
                 )}
               >
                 Privacy Policy.
@@ -184,5 +184,6 @@ const Agreement = styled.div`
   text-align: left;
   font-size: 0.12rem;
   margin-left: 0.4rem;
-  text-decoration:underline
+  text-decoration:underline;
+  cursor: pointer
 `
