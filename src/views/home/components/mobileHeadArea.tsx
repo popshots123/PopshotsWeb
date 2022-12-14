@@ -57,9 +57,28 @@ class MobileHeadArea extends React.Component<any, any> {
     // }, 3000);
   };
 
+  goIos = () => {
+    const query =
+      window.location.href.split("?")[1] == undefined
+        ? ""
+        : "?" + window.location.href.split("?")[1];
+    let url = `openpopshots://www.popshots.xyz/addfriends${query}`;
+    let ifr = document.createElement("iframe");
+    ifr.setAttribute("src", url); /***打开app的协议，有an同事提供***/
+    ifr.style.display = "none";
+    document.body.appendChild(ifr);
+
+    // setTimeout(function () {
+    //   location.href = "market://details?id=com.start.pop";
+    // }, 3000);
+  };
+
   render() {
     if (this.state.type == "android") {
       this.goAndroid();
+    }
+    if (this.state.type == "ios") {
+      this.goIos();
     }
     const evokeByLocation = () => {
       const query =
