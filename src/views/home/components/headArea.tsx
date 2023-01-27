@@ -37,7 +37,7 @@ const HeadArea: React.FC = () => {
               )}
               src={HeadButton}
             />
-            <PopButton onClick={jumpOut.bind(this, "/")} src={HeadIosButton} />
+            {/* <PopButton onClick={jumpOut.bind(this, "/")} src={HeadIosButton} /> */}
             <Agreement>
             <span
                 onClick={jumpOut.bind(

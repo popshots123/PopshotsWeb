@@ -9,10 +9,12 @@ import HeadLogo from "../../../assets/images/home/mobile/head-logo.png";
 // import HeadIosButton from "../../../assets/images/home/mobile/head-ios-button.png";
 import HeadPhone from "../../../assets/images/home/window/head-phone.png";
 
-import PopShotImg from "../../../assets/images/home/window/PopShots.png"
+import PopShotImg from "../../../assets/images/home/window/PopShots.png";
 
 import HeadButton from "../../../assets/images/home/window/head-button.png";
 import HeadIosButton from "../../../assets/images/home/window/head-ios-button.png";
+
+import { copyText } from "../../../utils/copy";
 
 class MobileHeadArea extends React.Component<any, any> {
   state = { type: "" };
@@ -41,6 +43,8 @@ class MobileHeadArea extends React.Component<any, any> {
     this.judgePhoneType();
   }
 
+
+
   goAndroid = () => {
     const query =
       window.location.href.split("?")[1] == undefined
@@ -51,10 +55,6 @@ class MobileHeadArea extends React.Component<any, any> {
     ifr.setAttribute("src", url); /***打开app的协议，有an同事提供***/
     ifr.style.display = "none";
     document.body.appendChild(ifr);
-
-    // setTimeout(function () {
-    //   location.href = "market://details?id=com.start.pop";
-    // }, 3000);
   };
 
   goIos = () => {
@@ -62,16 +62,36 @@ class MobileHeadArea extends React.Component<any, any> {
       window.location.href.split("?")[1] == undefined
         ? ""
         : "?" + window.location.href.split("?")[1];
+        console.log(query)
     let url = `openpopshots://www.popshots.xyz/addfriends${query}`;
     let ifr = document.createElement("iframe");
     ifr.setAttribute("src", url); /***打开app的协议，有an同事提供***/
     ifr.style.display = "none";
     document.body.appendChild(ifr);
-
-    // setTimeout(function () {
-    //   location.href = "market://details?id=com.start.pop";
-    // }, 3000);
+   
   };
+
+  downApp(){
+    if (this.state.type == "android") {
+      let url = `https://play.google.com/store/apps/details?id=com.start.pop`;
+      window.location.href = url;
+    } else if (this.state.type == "ios") {
+      let url = `https://apps.apple.com/app/id1665600910`;
+      window.location.href = url;
+    }
+  }
+
+  copyActive(){
+    const query =
+    window.location.href.split("?uid=")[1] == undefined
+      ? ""
+      : "" + window.location.href.split("?uid=")[1];
+      console.log(query)
+      copyText(query)
+      this.downApp()
+  }
+
+
 
   render() {
     if (this.state.type == "android") {
@@ -86,10 +106,10 @@ class MobileHeadArea extends React.Component<any, any> {
           ? ""
           : "?" + window.location.href.split("?")[1];
       if (this.state.type == "android") {
-        let url = `https://www.popshots.xyz/addfriends${query}`;
+        let url = `https://play.google.com/store/apps/details?id=com.start.pop`;
         window.location.href = url;
       } else if (this.state.type == "ios") {
-        let url = `https://www.popshots.xyz/addfriends${query}`;
+        let url = `https://apps.apple.com/app/id1665600910`;
         window.location.href = url;
       }
     };
@@ -98,10 +118,9 @@ class MobileHeadArea extends React.Component<any, any> {
     };
     return (
       <>
-        
         <MobileHeadBlock>
-        <Qvideo>
-        <video
+          <Qvideo>
+            <video
               autoPlay
               preload="auto"
               controlsList="nodownload"
@@ -118,16 +137,16 @@ class MobileHeadArea extends React.Component<any, any> {
               />
               您的浏览器不支持 video 标签。
             </video>
-        </Qvideo>
+          </Qvideo>
           <PopText>
             <PopLogo src={HeadLogo}></PopLogo>
           </PopText>
           <PopLogoText src={PopShotImg}></PopLogoText>
-              <PopContent>Share anything, anytime, anywhere.</PopContent>
+          <PopContent>Share anything, anytime, anywhere.</PopContent>
           <PopButton
-            src={this.state.type == "ios" ? HeadIosButton : HeadButton}
+            src={this.state.type == "ios" ? '' : HeadButton}
             onClick={() => {
-              radioActive();
+              this.copyActive()
             }}
           />
           <PopAnnotations>
@@ -165,14 +184,14 @@ const MobileHeadBlock = styled.div`
 `;
 
 const PopText = styled.div`
- position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: start;
-  padding: 1.34rem 0 0 0.94rem ;
+  padding: 1.34rem 0 0 0.94rem;
 `;
 const PopLogo = styled.img`
- position: relative;
+  position: relative;
   width: 1.04rem;
   height: 1.04rem;
 `;
@@ -188,21 +207,20 @@ const PopTitle = styled.div`
   margin-bottom: 0.03rem;
 `;
 const PopContent = styled.div`
- position: relative;
+  position: relative;
   font-size: 0.24rem;
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
   line-height: 0.24rem;
   margin-top: 0.4rem;
   text-align: center;
 `;
 const PopButton = styled.img`
- position: relative;
-    display: block;
-    /* width: 3.8rem; */
-    height: 1.04rem;
-    margin: 1.9rem auto 0 auto;
-  
+  position: relative;
+  display: block;
+  /* width: 3.8rem; */
+  height: 1.04rem;
+  margin: 1.9rem auto 0 auto;
 `;
 
 const PopPhone = styled.img`
@@ -214,10 +232,10 @@ const PopPhone = styled.img`
 `;
 
 const PopAnnotations = styled.div`
- position: absolute;
- bottom: 0.1rem;
+  position: absolute;
+  bottom: 0.1rem;
 
- width: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   font-size: 0.14rem;
@@ -226,25 +244,25 @@ const PopAnnotations = styled.div`
   line-height: 0.2rem;
   text-align: center;
   padding: 0.84rem 0 0.56rem 0;
-  color: #2E7E8F;
-  text-decoration:underline
+  color: #2e7e8f;
+  text-decoration: underline;
 `;
 
 const PopLogoText = styled.img`
- position: relative;
+  position: relative;
   width: 5.9rem;
   display: block;
   margin: 0 auto;
   margin-top: 1.6rem;
-`
+`;
 
 const Qvideo = styled.div`
- display: block;
-    width: 120%;
-    position: absolute;
-    bottom: 0;
-    left: -1.6rem;
-  video{
+  display: block;
+  width: 120%;
+  position: absolute;
+  bottom: 0;
+  left: -1.6rem;
+  video {
     width: 100%;
   }
 `;
